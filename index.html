@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>waveform</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css" type="text/css">
+	</head>
+	<body>
+		<div class="container mt-4 text-center">
+			
+			<h1 class="mb-2">Waveform</h1>
+
+			<div class="waveform-container">
+				<svg id="waveform-canvas" width="500" height="500">
+					<rect width="500" height="500" fill="#fff"></rect>
+				</svg>
+			</div>
+		
+		</div>
+
+		<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/svg-objects/SvgElement.js"></script>
+		<script type="text/javascript" src="js/svg-objects/WaveNode.js"></script>
+		<script type="text/javascript" src="js/WaveForm.js"></script>
+
+		<script type="text/javascript">
+
+			var waveBuffer = [0.5, 0.8, 0.58, 0.67, 0.4, 0.1, 0.9, 0.88, 0.6];
+
+			var model = {
+				songTitle: '',
+				artistName: '',
+				wave: {} // new WaveForm()
+			};
+
+			var view = {
+				artworkContainer: $('#waveform-canvas'),
+				updateSongTitle: function(){
+					
+				}
+			};
+
+			var controller = {
+				init: function(){
+
+					var waveForm = new WaveForm(waveBuffer);
+
+					console.log(view.artworkContainer);
+					console.log(waveForm.getXml());
+
+					view.artworkContainer.append( waveForm.getXml() );
+
+					model.wave = waveForm;
+
+				},
+				events: function(){
+
+					$('#input_color').on('input', function(){
+						model.wave.updateColor($(this).val());
+					});
+
+
+
+				}
+			};
+
+			controller.init();
+
+		</script>
+
+	</body>
+</html>
