@@ -2,21 +2,21 @@ var WaveNode = (function(){
 
 	console.log(SvgElement);
 
-	function WaveNode(width, x, height, fill){
+	function WaveNode(width, x, y, height, fill){
 		this.svgns = 'http://www.w3.org/2000/svg';
 		SvgElement.call(this, arguments);
-		this.create(width, x, height, fill);
+		this.create(width, x, y, height, fill);
 	}
 
 	WaveNode.prototype = Object.create(SvgElement.prototype);
 	WaveNode.prototype.constructor = WaveNode;
 
-	WaveNode.prototype.create = function(width, x, height, fill) {
+	WaveNode.prototype.create = function(width, x, y, height, fill) {
 		var node = document.createElementNS(this.svgns, 'path');
 		node.setAttributeNS(null, "stroke", fill);
 		node.setAttributeNS(null, "stroke-width", width);
 		node.setAttributeNS(null, "fill", "none");
-		node.setAttributeNS(null, "d", "M" + x + " 0 L" + x + " " + height);
+		node.setAttributeNS(null, "d", "M" + x + " " + y + " L" + x + " " + height);
 		this.element = node;
 	};
 

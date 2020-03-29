@@ -29,7 +29,13 @@
 
 		<script type="text/javascript">
 
-			var waveBuffer = [0.5, 0.8, 0.58, 0.67, 0.4, 0.1, 0.9, 0.88, 0.6];
+			// var waveBuffer = [0.5, 0.8, 0.58, 0.67, 0.4, 0.1, 0.9, 0.88, 0.6];
+
+			var waveBuffer = [];
+
+			for(i=0;i<542789;i++){
+				waveBuffer.push(Math.random());
+			}
 
 			var model = {
 				songTitle: '',
@@ -47,7 +53,7 @@
 			var controller = {
 				init: function(){
 
-					var waveForm = new WaveForm(waveBuffer);
+					var waveForm = new WaveForm(waveBuffer, '#720055');
 
 					console.log(view.artworkContainer);
 					console.log(waveForm.getXml());
