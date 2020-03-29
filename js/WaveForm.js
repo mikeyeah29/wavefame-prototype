@@ -12,10 +12,13 @@ var WaveForm = (function(){
 		this.amplitude = 70;
 		this.yCenter = 250;
 
+		this.nodes = [];
+
 	}
 
 	WaveForm.prototype.createNode = function(x, height){
 		var node = new WaveNode(this.thickness, x, this.yCenter, height, this.color);
+		this.nodes.push(node);
 		return node;
 	}
 
